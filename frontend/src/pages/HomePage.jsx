@@ -125,23 +125,27 @@ const HomePage = () => {
 
                       {/* Languages with flags */}
                       <div className="flex flex-wrap gap-1.5">
-                        <span className="badge badge-secondary">
-                          {getLanguageFlag(user.nativeLanguage)}
-                          Native: {capitialize(user.nativeLanguage)}
-                        </span>
-                        <span className="badge badge-outline">
-                          {getLanguageFlag(user.learningLanguage)}
-                          Learning: {capitialize(user.learningLanguage)}
-                        </span>
+                        {user.nativeLanguage && (
+                          <span className="badge badge-secondary">
+                            {getLanguageFlag(user.nativeLanguage)}
+                            Native: {capitialize(user.nativeLanguage)}
+                          </span>
+                        )}
+
+                        {user.learningLanguage && (
+                          <span className="badge badge-outline">
+                            {getLanguageFlag(user.learningLanguage)}
+                            Learning: {capitialize(user.learningLanguage)}
+                          </span>
+                        )}
                       </div>
 
                       {user.bio && <p className="text-sm opacity-70">{user.bio}</p>}
 
                       {/* Action button */}
                       <button
-                        className={`btn w-full mt-2 ${
-                          hasRequestBeenSent ? "btn-disabled" : "btn-primary"
-                        } `}
+                        className={`btn w-full mt-2 ${hasRequestBeenSent ? "btn-disabled" : "btn-primary"
+                          } `}
                         onClick={() => sendRequestMutation(user._id)}
                         disabled={hasRequestBeenSent || isPending}
                       >
