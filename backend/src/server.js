@@ -1,5 +1,6 @@
 import express from "express";
-import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config({ path: '/Users/macbook/Documents/PROJECTS/mingle-talks/backend/src/.env' });
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from "path";
